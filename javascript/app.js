@@ -7,16 +7,17 @@ async function getData() {
   console.log(data.longitude);
   //below is an example to grab the key/value of the object literal without having to refer to the object and scaling the tree to get to itlike done above in the console
   const { latitude, longitude, velocity, altitude } = data;
-  document.getElementById("lat").textContent = latitude;
-  document.getElementById("lon").textContent = longitude;
-  document.getElementById("alt").textContent = altitude;
-  document.getElementById("vel").textContent = velocity;
+  document.getElementById("lat").textContent = latitude.toFixed(2);
+  document.getElementById("lon").textContent = longitude.toFixed(2);
+  document.getElementById("alt").textContent = altitude.toFixed(2);
+  document.getElementById("vel").textContent = velocity.toFixed(2);
 
   marker.setLatLng([latitude, longitude]);
+  mymap.setView([latitude, longitude], 2);
 }
 
 getData();
-setInterval(getData, 4000);
+setInterval(getData, 10000);
 
 //USING LEAFLET.js is a library which will help us create the map
 
