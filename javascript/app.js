@@ -1,4 +1,5 @@
 const api_url = "https://api.wheretheiss.at/v1/satellites/25544";
+let first = true;
 
 async function getData() {
   const response = await fetch(api_url);
@@ -13,7 +14,11 @@ async function getData() {
   document.getElementById("vel").textContent = velocity.toFixed(2);
 
   marker.setLatLng([latitude, longitude]);
-  mymap.setView([latitude, longitude], 2);
+
+  if (first) {
+    mymap.setView([latitude, longitude], 2);
+    first = false;
+  }
 }
 
 getData();
